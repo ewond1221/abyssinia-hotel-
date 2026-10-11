@@ -1,0 +1,312 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+.navbar {
+  background-color: #111111;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+.nav-links a {
+  color: #bbbbbb;
+  text-decoration: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover {
+  color: white;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.site-header {
+  background-color: #111111;
+  color: #ffffff;
+  text-align: center;
+  padding: 60px 20px 50px;
+  border-bottom: 4px solid #ffffff;
+}
+.hotel-tagline {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #bbbbbb;
+  margin-bottom: 12px;
+}
+.hotel-name {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+.hotel-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+.menu-section {
+  margin-bottom: 70px;
+  scroll-margin-top: 100px;
+}
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #111111;
+  margin: 10px auto 40px;
+}
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+.card-img-wrapper {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  background-color: #e8e8e8;
+}
+.card-img-wrapper img {
+  transition: transform 0.4s ease;
+}
+.card:hover .card-img-wrapper img {
+  transform: scale(1.06);
+}
+.card-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.card-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 8px;
+}
+.card-desc {
+  font-size: 0.875rem;
+  color: #555555;
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.card-price {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #111111;
+  padding: 6px 16px;
+  border-radius: 2px;
+  align-self: flex-start;
+  letter-spacing: 0.03em;
+}
+.site-footer {
+  background-color: #111111;
+  color: #bbbbbb;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 4px solid #ffffff;
+}
+.footer-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.footer-detail {
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+  color: #999999;
+}
+.footer-copy {
+  font-size: 0.78rem;
+  color: #666666;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 768px) {
+  .site-header {
+    padding: 44px 16px 36px;
+  }
+  main {
+    padding: 40px 16px;
+  }
+  .menu-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-img-wrapper {
+    height: 190px;
+  }
+}
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+.btn-add {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #111111;
+  background-color: #ffffff;
+  border: 1px solid #111111;
+  padding: 10px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+.btn-add:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+.btn-add:active {
+  transform: scale(0.97);
+}
+.nav-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+.nav-cart-icon {
+  display: block;
+  flex-shrink: 0;
+}
+.cart-badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background-color: #ffffff;
+  color: #111111;
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-badge.is-hidden {
+  display: none;
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%) translateY(20px);
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 0.9rem;
+  padding: 13px 22px;
+  border-radius: 2px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  max-width: calc(100vw - 40px);
+  text-align: center;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+.toast.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}

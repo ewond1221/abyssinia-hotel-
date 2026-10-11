@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-dashboard.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}" />
+  </head>
+  <body>
+    <header class="dashboard-header admin-header">
+      <h1>Admin Bookings</h1>
+      <nav class="admin-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/add" class="add-order-button"> + Add Order </a>
+        <a href="/admin/menu">Menu Items</a>
+        <a href="/admin/bookings">Bookings</a>
+        <a href="/menu">Menu</a>
+      </nav>
+      <div class="dashboard-actions">
+        <button id="logoutButton">Logout</button>
+      </div>
+    </header>
+    <main class="dashboard">
+      <section class="stats-grid">
+        <div class="stat-card"><h3>Total Bookings</h3><p id="totalBookings">0</p></div>
+        <div class="stat-card"><h3>Pending</h3><p id="pendingBookings">0</p></div>
+        <div class="stat-card"><h3>Confirmed</h3><p id="confirmedBookings">0</p></div>
+        <div class="stat-card"><h3>Cancelled</h3><p id="cancelledBookings">0</p></div>
+      </section>
+      <section class="orders-section">
+        <div class="section-header">
+          <div>
+            <h2>Room bookings</h2>
+            <p>Confirm, cancel, or delete guest bookings.</p>
+          </div>
+        </div>
+        <div id="bookingsContainer">Loading bookings...</div>
+      </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-bookings.js') }}"></script>
+  </body>
+</html>

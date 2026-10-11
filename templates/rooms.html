@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a room | Abyssinia Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hotel.css') }}" />
+  </head>
+  <body>
+    {% include "_hotel_nav.html" %}
+    <main class="wrap page">
+      <h2>Book a room</h2>
+      <p class="lead">Pick your dates and room. Your booking stays pending until the front desk confirms it.</p>
+      <div class="booking">
+        <form id="bookingForm" class="form">
+          <label>Full name<input id="guest" type="text" required /></label>
+          <label>Room
+            <select id="room_type">
+              {% for key, room in rooms.items() %}
+              <option value="{{ key }}" data-price="{{ room.price }}" data-max="{{ room.max_guests }}">{{ room.name }}, ETB {{ "{:,}".format(room.price) }} per night</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label>Check-in<input id="check_in" type="date" required /></label>
+          <label>Check-out<input id="check_out" type="date" required /></label>
+          <label>Guests<input id="guests" type="number" min="1" value="1" required /></label>
+          <p id="summary" class="lead">Choose your check-in and check-out dates to see the total.</p>
+          <button class="btn" type="submit">Book room</button>
+          <div id="message" class="msg hidden"></div>
+        </form>
+        <div class="stack">
+          {% for key, room in rooms.items() %}
+          <div class="card">
+            <div class="photo"><img src="{{ url_for('static', filename=room.img) }}" alt="{{ room.name }}" /></div>
+            <div class="body">
+              <h3>{{ room.name }}</h3>
+              <p>{{ room.desc }}</p>
+              <p class="price">ETB {{ "{:,}".format(room.price) }} per night, up to {{ room.max_guests }} guests</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+    {% include "_hotel_footer.html" %}
+    <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+  </body>
+</html>

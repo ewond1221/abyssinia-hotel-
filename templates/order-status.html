@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Check Order</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/order-status.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="order-page">
+
+        <div class="order-container">
+
+            <h1>Check Your Order</h1>
+
+            <p>
+                Enter both your order ID and the name you gave when ordering.
+            </p>
+
+            <form id="orderLookupForm" class="lookup-form">
+
+                <label for="orderId">
+                    Order ID
+                </label>
+
+                <input
+                    type="number"
+                    id="orderId"
+                    placeholder="Enter order ID"
+                    required
+                    min="1"
+                >
+
+                <label for="customerName">
+                    Name used when ordering
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <button type="submit">
+                    Check Order
+                </button>
+
+            </form>
+
+            <p
+                id="errorMessage"
+                class="error-message"
+            ></p>
+
+            <div
+                id="orderResult"
+                class="order-result"
+            ></div>
+
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='js/order-lookup.js') }}"
+    ></script>
+
+</body>
+</html>

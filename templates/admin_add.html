@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Order</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+    <style>
+      .menu-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .menu-item {
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 14px;
+      }
+      .menu-item-name {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .menu-item-price {
+        color: #6b7280;
+        margin-bottom: 10px;
+      }
+      .hint {
+        font-weight: 400;
+        color: #6b7280;
+        font-size: 13px;
+      }
+      .custom-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .custom-item-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 80px auto;
+        gap: 10px;
+        align-items: center;
+      }
+      .custom-item-row input {
+        padding: 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .btn-secondary {
+        background: #e5e7eb;
+        color: #111827;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        background: #d1d5db;
+      }
+      .btn-remove-row {
+        background: #fee2e2;
+        color: #991b1b;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .btn-remove-row:hover {
+        background: #fecaca;
+      }
+      @media (max-width: 600px) {
+        .custom-item-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="admin-header">
+      <h1>Hotel Admin</h1>
+
+      <nav class="admin-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/add">Add Order</a>
+        <a href="/admin/menu">Menu Items</a>
+        <a href="/admin/bookings">Bookings</a>
+          <a href="/menu">Menu</a>
+      </nav>
+    </header>
+
+    <main class="admin-container">
+
+      <a href="/admin/dashboard" class="back-link">
+        ← Back to Orders
+      </a>
+
+      <div class="page-header">
+        <h2>Add New Order</h2>
+
+        <p>Manually create an order for a customer.</p>
+      </div>
+
+      <div class="form-card">
+
+        <form id="addOrderForm">
+
+          <div class="form-group">
+            <label for="customer">
+              Customer
+            </label>
+
+            <input
+              type="text"
+              id="customer"
+              name="customer"
+              placeholder="Enter customer name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label>
+              Menu Items
+            </label>
+
+            <div id="menuItemsGrid" class="menu-items">Loading menu...</div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              Custom Items <span class="hint">(for dishes not on the menu)</span>
+            </label>
+
+            <div id="customItemsContainer" class="custom-items"></div>
+
+            <button type="button" id="addCustomItemButton" class="btn-secondary">
+              + Add Custom Item
+            </button>
+          </div>
+
+          <div class="form-group">
+            <p><strong>Total quantity:</strong> <span id="orderTotalQty">0</span></p>
+            <p><strong>Total price (calculated automatically):</strong> ETB <span id="orderTotalPrice">0.00</span></p>
+          </div>
+
+          <p id="errorMessage" class="error-message"></p>
+
+          <button
+            type="button"
+            id="submitOrderButton"
+            class="btn-submit"
+          >
+            Add Order
+          </button>
+
+        </form>
+
+      </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script
+      src="{{ url_for('static', filename='js/admin-add.js') }}"
+    ></script>
+
+  </body>
+</html>

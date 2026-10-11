@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+.order-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+.order-container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+.order-container h1 {
+  margin-bottom: 10px;
+}
+.order-container > p {
+  color: #666;
+  margin-bottom: 24px;
+}
+.lookup-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.lookup-tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.lookup-tab.is-active {
+  color: #222;
+  border-bottom-color: #222;
+}
+.lookup-tab:hover {
+  color: #222;
+}
+.lookup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lookup-form.is-hidden {
+  display: none;
+}
+.lookup-form label {
+  font-weight: 600;
+}
+.lookup-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.lookup-form input:focus {
+  outline: none;
+  border-color: #555;
+}
+.lookup-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.lookup-form button:hover {
+  background: #444;
+}
+.error-message {
+  margin-top: 16px;
+  color: #dc2626;
+}
+.order-result {
+  margin-top: 24px;
+}
+.order-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.order-card h2 {
+  margin-bottom: 16px;
+}
+.order-card p {
+  margin-bottom: 10px;
+}
+.order-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.status-badge {
+  display: inline-flex;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+.status-preparing {
+  background: #cfe2ff;
+  color: #084298;
+}
+.status-completed {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+.status-cancelled {
+  background: #f8d7da;
+  color: #842029;
+}

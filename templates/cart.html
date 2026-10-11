@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abyssinia Hotel — Your Cart</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/css/cart.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="{{ url_for('landing') }}" class="logo"> Abyssinia Hotel </a>
+        <ul class="nav-links">
+          <li>
+            <a href="{{ url_for('landing') }}"> Home </a>
+          </li>
+          <li>
+            <a href="{{ url_for('home') }}#starters"> Starters </a>
+          </li>
+          <li>
+            <a href="{{ url_for('home') }}#main-course"> Main Course </a>
+          </li>
+          <li>
+            <a href="{{ url_for('home') }}#desserts"> Desserts </a>
+          </li>
+          <li>
+            <a href="{{ url_for('order_status') }}"> Track Order </a>
+          </li>
+          <li>
+            <a
+              href="{{ url_for('cart') }}"
+              class="nav-cart"
+              aria-label="Go to cart"
+            >
+              <svg
+                class="nav-cart-icon"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="9" cy="21" r="1"></circle>
+
+                <circle cx="20" cy="21" r="1"></circle>
+
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                ></path>
+              </svg>
+
+              <span id="cart-badge" class="cart-badge is-hidden"> 0 </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <p class="hotel-tagline">Fine Dining Experience</p>
+
+        <h1 class="hotel-name">Abyssinia Hotel</h1>
+
+        <p class="hotel-subtitle">Your Cart</p>
+      </div>
+    </header>
+
+    <main class="cart-main">
+      <h2 class="section-title">Your Cart</h2>
+
+      <p id="cart-count-line" class="cart-count-line is-hidden">
+        You have
+        <span id="cart-count">0</span>
+        item(s) in your cart.
+      </p>
+
+      <div class="cart-layout">
+        <!-- CART CONTENT -->
+
+        <section class="cart-content" aria-label="Cart items">
+          <!-- EMPTY CART -->
+
+          <div id="cart-empty" class="cart-empty is-hidden">
+            <div class="cart-empty-icon" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="9" cy="21" r="1"></circle>
+
+                <circle cx="20" cy="21" r="1"></circle>
+
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                ></path>
+              </svg>
+            </div>
+
+            <h3 class="cart-empty-title">Your cart is empty</h3>
+
+            <p class="cart-empty-text">
+              Looks like you haven't added anything to your cart yet. Explore
+              our menu and find something delicious.
+            </p>
+
+            <a href="{{ url_for('home') }}" class="btn-browse">
+              Browse the Menu
+            </a>
+          </div>
+
+          <div id="cart-items" class="cart-items"></div>
+        </section>
+
+        <aside
+          id="cart-summary"
+          class="order-summary is-hidden"
+          aria-label="Order summary"
+        >
+          <h3 class="summary-title">Order Summary</h3>
+
+          <div class="summary-rows">
+            <div class="summary-row">
+              <span> Subtotal </span>
+
+              <span class="value" id="summary-subtotal"> ETB 0.00 </span>
+            </div>
+
+            <div class="summary-row">
+              <span> Delivery Fee </span>
+
+              <span class="value" id="summary-delivery"> ETB 0.00 </span>
+            </div>
+
+            <div class="summary-row">
+              <span> Tax </span>
+
+              <span class="value" id="summary-tax"> ETB 0.00 </span>
+            </div>
+
+            <div class="summary-row">
+              <span> Discount </span>
+
+              <span class="value summary-discount" id="summary-discount">
+                ETB 0.00
+              </span>
+            </div>
+          </div>
+
+          <div class="summary-total">
+            <span class="label"> Grand Total </span>
+
+            <span class="value" id="summary-grand"> ETB 0.00 </span>
+          </div>
+
+          <button type="button" id="place-order" class="btn-place-order">
+            Place Order
+          </button>
+
+          <a href="{{ url_for('home') }}" class="btn-continue">
+            Continue Ordering
+          </a>
+        </aside>
+      </div>
+    </main>
+
+    <div
+      id="order-modal"
+      class="order-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="order-modal-title"
+    >
+      <div class="order-modal-box">
+        <div class="order-modal-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+
+        <h3 id="order-modal-title" class="order-modal-title">Order Placed!</h3>
+
+        <p class="order-modal-text">
+          Thank you for your order. Our kitchen is already preparing your meal.
+        </p>
+
+        <p class="order-modal-text">
+          Your order ID is <strong id="order-modal-id">#0</strong>. You'll need
+          this ID and the name you gave to track your order later.
+        </p>
+
+        <a
+          id="order-modal-track"
+          href="{{ url_for('order_status') }}"
+          data-base-href="{{ url_for('order_status') }}"
+          class="btn-continue"
+        >
+          Track This Order
+        </a>
+
+        <a href="{{ url_for('home') }}" class="btn-browse">
+          Continue Ordering
+        </a>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-name">Abyssinia Hotel</p>
+
+        <p class="footer-detail">this is our best and attractive food menu</p>
+
+        <p class="footer-copy">
+          &copy; 2026 Abyssinia Hotel. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

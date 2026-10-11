@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Dashboard</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin-dashboard.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="dashboard-header admin-header">
+      <h1>Admin Dashboard</h1>
+
+      <header class="">
+        <nav class="admin-nav">
+          <a href="/admin/dashboard">Dashboard</a>
+          <a href="/admin/add" class="add-order-button"> + Add Order </a>
+          <a href="/admin/menu">Menu Items</a>
+          <a href="/admin/bookings">Bookings</a>
+          <a href="/menu">Menu</a>
+        </nav>
+      </header>
+      <div class="dashboard-actions">
+        <button id="logoutButton">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <!-- Statistics -->
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Orders</h3>
+          <p id="totalOrders">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Pending</h3>
+          <p id="pendingOrders">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Completed</h3>
+          <p id="completedOrders">0</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Cancelled</h3>
+          <p id="cancelledOrders">0</p>
+        </div>
+      </section>
+
+      <!-- Orders -->
+
+      <section class="orders-section">
+        <div class="section-header">
+          <div>
+            <h2>Orders</h2>
+            <p>Manage customer orders.</p>
+          </div>
+        </div>
+
+        <div id="ordersContainer">Loading orders...</div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-dashboard.js') }}"></script>
+  </body>
+</html>

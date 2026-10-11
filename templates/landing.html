@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abyssinia Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hotel.css') }}" />
+  </head>
+  <body>
+    {% include "_hotel_nav.html" %}
+    <header class="hero">
+      <div class="wrap">
+        <div>
+          <h1>Rooted in heritage, built for tomorrow.</h1>
+          <p>Stay in a mountain-view room, eat Ethiopian dishes at our restaurant, and handle both from one place.</p>
+          <div class="actions">
+            <a class="btn" href="{{ url_for('rooms_page') }}">Book a room</a>
+            <a class="btn ghost" href="{{ url_for('home') }}">Order food</a>
+          </div>
+        </div>
+        <div class="photo"><img src="{{ url_for('static', filename='img/hotel/lobby.jpg') }}" alt="Hotel lobby and reception" /></div>
+      </div>
+    </header>
+    <section class="block" id="about">
+      <div class="wrap split">
+        <div>
+          <h2>About Abyssinia Hotel</h2>
+          <p>Abyssinia Hotel brings Ethiopian craft and modern comfort under one roof. Dark wood, warm stone, and woven textiles run from the front desk to every guest room.</p>
+          <p>Book a room for your stay, or order from our restaurant menu whether you are staying with us or just here for a meal.</p>
+        </div>
+        <div class="logo-box"><div class="photo"><img src="{{ url_for('static', filename='img/hotel/logo.jpg') }}" alt="Abyssinia Hotel logo" /></div></div>
+      </div>
+    </section>
+    <section class="block" id="rooms">
+      <div class="wrap">
+        <h2>Our rooms</h2>
+        <p class="lead">Both room types have a balcony or wide windows facing the mountains.</p>
+        <div class="cards">
+          {% for key, room in rooms.items() %}
+          <div class="card">
+            <div class="photo"><img src="{{ url_for('static', filename=room.img) }}" alt="{{ room.name }}" /></div>
+            <div class="body">
+              <h3>{{ room.name }}</h3>
+              <p>{{ room.desc }}</p>
+              <p class="price">ETB {{ "{:,}".format(room.price) }} per night, up to {{ room.max_guests }} guests</p>
+              <a class="btn" href="{{ url_for('rooms_page') }}?type={{ key }}">Book this room</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <section class="block" id="dining">
+      <div class="wrap split">
+        <div>
+          <h2>Dining at the hotel</h2>
+          <p>Our restaurant serves Ethiopian classics like doro wat and kitfo next to a menu of starters, mains, and desserts. Order ahead and track your order with your order ID.</p>
+          <a class="btn" href="{{ url_for('home') }}">Order food</a>
+        </div>
+        <div class="photo dining-photo"><img src="{{ url_for('static', filename='img/hotel/restaurant.jpg') }}" alt="Hotel restaurant" /></div>
+      </div>
+    </section>
+    <section class="block">
+      <div class="wrap">
+        <h2>Around the hotel</h2>
+        <p class="lead">A few of the places and details you will find during your stay.</p>
+        <div class="cards">
+          <div class="card"><div class="photo"><img src="{{ url_for('static', filename='img/hotel/rooftop.jpg') }}" alt="Rooftop terrace" /></div><div class="body"><h3>Rooftop terrace</h3><p>Sit above the city with the mountains in view.</p></div></div>
+          <div class="card"><div class="photo"><img src="{{ url_for('static', filename='img/hotel/cuisine.jpg') }}" alt="Ethiopian cuisine" /></div><div class="body"><h3>Ethiopian cuisine</h3><p>Injera platters, stews, and spiced dishes from our kitchen.</p></div></div>
+          <div class="card"><div class="photo"><img src="{{ url_for('static', filename='img/hotel/bathroom.jpg') }}" alt="Hotel bathroom" /></div><div class="body"><h3>Private bathrooms</h3><p>Glass showers and warm stone finishes in every room.</p></div></div>
+          <div class="card"><div class="photo"><img src="{{ url_for('static', filename='img/hotel/amenities.jpg') }}" alt="Branded amenities" /></div><div class="body"><h3>Branded amenities</h3><p>Towels and toiletries marked with the Abyssinia crest.</p></div></div>
+        </div>
+      </div>
+    </section>
+    {% include "_hotel_footer.html" %}
+  </body>
+</html>

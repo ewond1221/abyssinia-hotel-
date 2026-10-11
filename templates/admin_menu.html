@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Manage Menu Items</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin-dashboard.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin.css') }}"
+    />
+  </head>
+
+  <body>
+    <header class="dashboard-header admin-header">
+      <h1>Hotel Admin</h1>
+
+      <nav class="admin-nav">
+        <a href="/admin/dashboard">Dashboard</a>
+        <a href="/admin/add">Add Order</a>
+        <a href="/admin/menu">Menu Items</a>
+        <a href="/admin/bookings">Bookings</a>
+          <a href="/menu">Menu</a>
+      </nav>
+
+      <div class="dashboard-actions">
+        <button id="logoutButton">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="orders-section">
+        <div class="section-header">
+          <div>
+            <h2>Menu Items</h2>
+            <p>Add, edit, or remove dishes from the menu. This is separate from Orders.</p>
+          </div>
+        </div>
+
+        <div id="menuItemsContainer">Loading menu items...</div>
+
+        <div class="form-card" style="margin-top: 24px;">
+          <h3 style="margin-bottom: 16px;">Add New Menu Item</h3>
+
+          <div class="form-group">
+            <label for="newItemId">Item ID (unique)</label>
+            <input type="text" id="newItemId" placeholder="e.g. garlic-bread" />
+          </div>
+
+          <div class="form-group">
+            <label for="newItemName">Name</label>
+            <input type="text" id="newItemName" />
+          </div>
+
+          <div class="form-group">
+            <label for="newItemDesc">Description</label>
+            <input type="text" id="newItemDesc" />
+          </div>
+
+          <div class="form-group">
+            <label for="newItemPrice">Price</label>
+            <input type="number" id="newItemPrice" step="0.01" min="0" />
+          </div>
+
+          <div class="form-group">
+            <label for="newItemCategory">Category</label>
+            <select id="newItemCategory">
+              <option value="starters">Starters</option>
+              <option value="main-course">Main Course</option>
+              <option value="desserts">Desserts</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="newItemImg">Image path (inside static/, e.g. img/image1.png)</label>
+            <input type="text" id="newItemImg" placeholder="img/image1.png" />
+          </div>
+
+          <p id="menuErrorMessage" class="error-message"></p>
+
+          <button type="button" id="addMenuItemButton" class="btn-submit">
+            Add Menu Item
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/safe.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-menu.js') }}"></script>
+  </body>
+</html>

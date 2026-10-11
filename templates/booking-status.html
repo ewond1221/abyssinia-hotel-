@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track booking | Abyssinia Hotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hotel.css') }}" />
+  </head>
+  <body>
+    {% include "_hotel_nav.html" %}
+    <main class="wrap page">
+      <h2>Track your booking</h2>
+      <p class="lead">Enter your booking ID and the name you booked under.</p>
+      <form id="lookupForm" class="form narrow">
+        <label>Booking ID<input id="bookingId" type="number" min="1" required /></label>
+        <label>Guest name<input id="guestName" type="text" required /></label>
+        <button class="btn" type="submit">Find booking</button>
+      </form>
+      <div id="result" class="msg hidden status-form"></div>
+    </main>
+    {% include "_hotel_footer.html" %}
+    <script src="{{ url_for('static', filename='js/booking-lookup.js') }}"></script>
+  </body>
+</html>
