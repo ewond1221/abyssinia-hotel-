@@ -483,9 +483,9 @@ DEFAULT_MENU = [
     {"id": "lava-cake", "name": "Chocolate Lava Cake", "desc": "Warm dark chocolate fondant with a molten centre, served with vanilla bean ice cream.", "price": 11.0, "img": "img/image7.png", "category": "desserts"},
     {"id": "creme-brulee", "name": "Crème Brûlée", "desc": "Classic French custard with a crisp caramelised sugar crust, topped with fresh berries.", "price": 10.0, "img": "img/image8.png", "category": "desserts"},
     {"id": "cheesecake", "name": "New York Cheesecake", "desc": "Dense and creamy cheesecake on a buttery graham cracker base with a fresh strawberry compote.", "price": 9.5, "img": "img/image9.png", "category": "desserts"},
-    {"id": "doro-wat", "name": "Doro Wat", "desc": "Slow-cooked chicken stew in spiced berbere sauce with a boiled egg, served with injera.", "price": 24.0, "img": "img/hotel/cuisine.jpg", "category": "ethiopian"},
-    {"id": "kitfo", "name": "Kitfo", "desc": "Minced beef seasoned with mitmita and spiced butter, served with ayib cheese and injera.", "price": 26.0, "img": "img/hotel/cuisine.jpg", "category": "ethiopian"},
-    {"id": "beyaynetu", "name": "Beyaynetu Platter", "desc": "Fasting platter of shiro, misir wat, gomen, and atkilt on fresh injera.", "price": 20.0, "img": "img/hotel/cuisine.jpg", "category": "ethiopian"},
+    {"id": "doro-wat", "name": "Doro Wat", "desc": "Slow-cooked chicken stew in spiced berbere sauce with a boiled egg, served with injera.", "price": 24.0, "img": "img/hotel/doro.jpg", "category": "ethiopian"},
+    {"id": "kitfo", "name": "Kitfo", "desc": "Minced beef seasoned with mitmita and spiced butter, served with ayib cheese and injera.", "price": 26.0, "img": "img/hotel/kitfo.jpg", "category": "ethiopian"},
+    {"id": "beyaynetu", "name": "Beyaynetu Platter", "desc": "Fasting platter of shiro, misir wat, gomen, and atkilt on fresh injera.", "price": 20.0, "img": "img/hotel/beyeaynetu.jpg", "category": "ethiopian"},
 ]
 
 @app.route("/api/menu")
